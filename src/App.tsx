@@ -8,7 +8,6 @@ import {
   Heading,
   Icon,
   Input,
-  Stack,
   Switch,
   Text,
   VStack,
