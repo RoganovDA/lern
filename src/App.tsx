@@ -8,7 +8,7 @@ import {
   Heading,
   Icon,
   Input,
-  Switch,
+  Switch as ChakraSwitch,
   Text,
   VStack,
 } from "@chakra-ui/react"
@@ -37,11 +37,11 @@ function App() {
           
           <HStack mb={8} align="start">
             <Box position="relative">
-              <Avatar 
-                size="2xl" 
-                bg="teal.500"
-                icon={<Icon as={FaUpload} boxSize={8} />}
-              />
+              <Avatar.Root size="2xl" bg="teal.500">
+                <Avatar.Fallback>
+                  <Icon as={FaUpload} boxSize={8} />
+                </Avatar.Fallback>
+              </Avatar.Root>
             </Box>
             <VStack align="start" spacing={2}>
               <Button 
@@ -225,13 +225,17 @@ function App() {
                   </Text>
                 </VStack>
               </HStack>
-              <Switch
+              <ChakraSwitch.Root
                 colorScheme="teal"
-                isChecked={notification.email}
-                onChange={(e) =>
-                  setNotification({ ...notification, email: e.target.checked })
+                checked={notification.email}
+                onCheckedChange={(d) =>
+                  setNotification({ ...notification, email: d.checked })
                 }
-              />
+              >
+                <ChakraSwitch.Control>
+                  <ChakraSwitch.Thumb />
+                </ChakraSwitch.Control>
+              </ChakraSwitch.Root>
             </HStack>
 
             <HStack justify="space-between" py={4}>
@@ -244,13 +248,17 @@ function App() {
                   </Text>
                 </VStack>
               </HStack>
-              <Switch
+              <ChakraSwitch.Root
                 colorScheme="teal"
-                isChecked={notification.slack}
-                onChange={(e) =>
-                  setNotification({ ...notification, slack: e.target.checked })
+                checked={notification.slack}
+                onCheckedChange={(d) =>
+                  setNotification({ ...notification, slack: d.checked })
                 }
-              />
+              >
+                <ChakraSwitch.Control>
+                  <ChakraSwitch.Thumb />
+                </ChakraSwitch.Control>
+              </ChakraSwitch.Root>
             </HStack>
 
             <HStack justify="space-between" py={4}>
@@ -263,13 +271,17 @@ function App() {
                   </Text>
                 </VStack>
               </HStack>
-              <Switch
+              <ChakraSwitch.Root
                 colorScheme="teal"
-                isChecked={notification.mobile}
-                onChange={(e) =>
-                  setNotification({ ...notification, mobile: e.target.checked })
+                checked={notification.mobile}
+                onCheckedChange={(d) =>
+                  setNotification({ ...notification, mobile: d.checked })
                 }
-              />
+              >
+                <ChakraSwitch.Control>
+                  <ChakraSwitch.Thumb />
+                </ChakraSwitch.Control>
+              </ChakraSwitch.Root>
             </HStack>
           </VStack>
         </Box>
